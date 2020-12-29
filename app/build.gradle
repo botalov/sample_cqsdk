@@ -4,6 +4,8 @@ apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.google.gms.google-services'
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -40,9 +42,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation "androidx.recyclerview:recyclerview:1.1.0"
-    implementation 'com.google.firebase:firebase-messaging:20.0.1'
+
+    implementation 'com.google.firebase:firebase-messaging:21.0.1'
 
     implementation 'com.android.support:multidex:1.0.3'
-    //implementation 'io.carrotquest:android-sdk:1.0.26-commonRelease'
-    implementation 'io.carrotquest:android-sdk:1.0.30_test_6-commonRelease'
+    implementation 'io.carrotquest:android-sdk:1.0.28-commonRelease'
+    //implementation 'io.carrotquest:android-sdk:1.0.30_test_6-commonRelease'
 }
