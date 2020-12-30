@@ -12,6 +12,8 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         if (data.containsKey(NotificationsConstants.CQ_SDK_PUSH) && "true" == data[NotificationsConstants.CQ_SDK_PUSH]
         ) {
             Carrot.sendFirebasePushNotification(remoteMessage)
+        } else {
+            //Yot code
         }
     }
 }

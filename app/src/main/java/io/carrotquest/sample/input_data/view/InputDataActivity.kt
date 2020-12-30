@@ -43,7 +43,7 @@ class InputDataActivity: AppCompatActivity(), IInputDataView {
     }
 
     override fun showConnectError() {
-        Toast.makeText(this, "Не удалось установить соединение", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.connect_error, Toast.LENGTH_SHORT).show()
     }
 
     override fun openMainActivity() {
@@ -54,7 +54,7 @@ class InputDataActivity: AppCompatActivity(), IInputDataView {
     }
 
     override fun showFieldsIsEmptyError() {
-        Toast.makeText(this, "Заполните все поля", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, R.string.empty_fields_error, Toast.LENGTH_SHORT).show()
     }
 
     override fun showProgress() {
