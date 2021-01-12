@@ -26,6 +26,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "main"
+    productFlavors {
+        common{
+            dimension "main"
+        }
+        us{
+            dimension "main"
+            applicationId "io.dashly.sample"
+        }
+    }
+
     compileOptions {
         sourceCompatibility 1.8
         targetCompatibility 1.8
