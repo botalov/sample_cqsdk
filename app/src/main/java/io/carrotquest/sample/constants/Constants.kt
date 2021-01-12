@@ -17,3 +17,5 @@ const val USER_ID = "user_id"
 const val USER_NAME = "user_name"
 const val USER_EMAIl = "user_email"
 const val USER_PHONE = "user_phone"
+
+const val TEST_ITERATION = 1
