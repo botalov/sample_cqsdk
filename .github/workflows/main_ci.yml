@@ -25,10 +25,10 @@ jobs:
       - name: Upload COMMON APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-release.apk
+          name: app-common-release.apk
           path: app/build/outputs/apk/common/release/app-common-release-unsigned.apk
       - name: Upload US APK
         uses: actions/upload-artifact@v2
         with:
-            name: app-release.apk
+            name: app-us-release.apk
             path: app/build/outputs/apk/us/release/app-us-release-unsigned.apk
