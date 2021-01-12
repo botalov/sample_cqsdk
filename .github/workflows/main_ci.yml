@@ -20,8 +20,8 @@ jobs:
       - name: Build APK
         run: |
           ./gradlew test
-          ./gradlew assembleUsRelease
-          ./gradlew bundleUsRelease
+          ./gradlew assembleRelease
+          ./gradlew bundleRelease
       - name: Upload APK
         uses: actions/upload-artifact@v2
         with:
