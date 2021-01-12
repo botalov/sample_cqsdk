@@ -17,3 +17,13 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build with Gradle
         run: ./gradlew assembleDebug
+      - name: Build APK
+        run: |
+          ./gradlew test
+          ./gradlew assembleRelease
+          ./gradlew bundleRelease
+      - name: Upload APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release.apk
+          path: app/build/outputs/apk/release/app-release-unsigned.apk
