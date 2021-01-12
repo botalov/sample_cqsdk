@@ -49,3 +49,4 @@ dependencies {
     implementation 'io.carrotquest:android-sdk:1.0.28-commonRelease'
     //implementation 'io.carrotquest:android-sdk:1.0.30_test_6-commonRelease'
 }
+apply plugin: 'com.google.gms.google-services'
