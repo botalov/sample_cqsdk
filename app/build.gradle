@@ -29,7 +29,7 @@ android {
             if(keystorePropsFile.exists()) {
 
             } else {
-                storeFile file("keystore/key_for_sample_sdk")
+                storeFile file("keystore/key_for_sample_sdk.jks")
                 storePassword System.getenv('KEYSTORE_PASSWORD')
                 keyAlias System.getenv('RELEASE_SIGN_KEY_ALIAS')
                 keyPassword System.getenv('RELEASE_SIGN_KEY_PASSWORD')
