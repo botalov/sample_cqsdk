@@ -28,7 +28,7 @@ jobs:
         with:
           repository: ${{ secrets.KEYSTORE_GIT_REPOSITORY }}
           token: ${{ secrets.KEYSTORE_ACCESS_TOKEN }}
-          : app/keystore
+          path: app/keystore
       - name: Build APK
         run: |
           ./gradlew test
