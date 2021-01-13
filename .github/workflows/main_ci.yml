@@ -22,7 +22,8 @@ jobs:
         run: |
           ./gradlew test
           ./gradlew assembleDebug
-          ./gradlew assembleDebugAndroidTest
+          ./gradlew assembleCommonDebugAndroidTest
+          ./gradlew assembleUsDebugAndroidTest
 #     CQ app-debug.apk
       - name: Upload app-debug APK
         uses: actions/upload-artifact@v2
