@@ -28,28 +28,28 @@ jobs:
       - name: Upload app-debug APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-debug
+          name: app-common-debug
           path: app/build/outputs/apk/common/debug/app-common-debug.apk
 
 #     CQ app-debug-androidTest.apk
       - name: Upload app-debug-androidTest APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-debug-androidTest
+          name: app-common-debug-androidTest
           path: app/build/outputs/apk/androidTest/common/debug/app-common-debug-androidTest.apk
 
 #     Dashly app-debug.apk
       - name: Upload app-us APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-debug
+          name: app-us-debug
           path: app/build/outputs/apk/us/debug/app-us-debug.apk
 
 #     Dashly app-debug-androidTest.apk
       - name: Upload app-us-androidTest APK
         uses: actions/upload-artifact@v2
         with:
-          name: app-debug-androidTest
+          name: app-us-debug-androidTest
           path: app/build/outputs/apk/androidTest/us/debug/app-us-debug-androidTest.apk
 
 # Запуск UI-тестов в Firebase Test Lab
@@ -61,12 +61,12 @@ jobs:
       - name: Download app-common-debug APK
         uses: actions/download-artifact@v1
         with:
-          name: app-debug
+          name: app-common-debug
 
       - name: Download app-common-debug-androidTest APK
         uses: actions/download-artifact@v1
         with:
-          name: app-debug-androidTest
+          name: app-common-debug-androidTest
 
       - name: Firebase auth with gcloud
         uses: google-github-actions/setup-gcloud@master
@@ -78,7 +78,7 @@ jobs:
       - name: Run Instrumentation Tests in Firebase Test Lab
         run: |
           gcloud firebase test android models list
-          gcloud firebase test android run --type instrumentation --use-orchestrator --app app-debug/app-debug.apk --test app-debug-androidTest/app-debug-androidTest.apk --device model=Pixel2,version=28,locale=en,orientation=portrait
+          gcloud firebase test android run --type instrumentation --use-orchestrator --app app-common-debug/app-common-debug.apk --test app-common-debug-androidTest/app-common-debug-androidTest.apk --device model=Pixel2,version=28,locale=en,orientation=portrait
 
   build:
     runs-on: ubuntu-latest
