@@ -13,7 +13,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         ) {
             Carrot.sendFirebasePushNotification(remoteMessage)
         } else {
-            //Yot code
+            //Your code
         }
     }
 }
