@@ -17,24 +17,39 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-
+#     Прогонка юнит-тестов и подготовка артефактов для интерфейсных тестов
       - name: Build APK for UI test after Unit tests
         run: |
           ./gradlew test
           ./gradlew assembleDebug
           ./gradlew assembleDebugAndroidTest
-
+#     CQ app-debug.apk
       - name: Upload app-debug APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-common-debug.apk
 
+#     CQ app-debug-androidTest.apk
       - name: Upload app-debug-androidTest APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug-androidTest
-          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+          path: app/build/outputs/apk/androidTest/debug/app-common-debug-androidTest.apk
+
+#     Dashly app-debug.apk
+      - name: Upload app-debug APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug
+          path: app/build/outputs/apk/debug/app-common-debug.apk
+
+#     Dashly app-debug-androidTest.apk
+      - name: Upload app-debug-androidTest APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug-androidTest
+          path: app/build/outputs/apk/androidTest/debug/app-common-debug-androidTest.apk
 
   build:
     runs-on: ubuntu-latest
