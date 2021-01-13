@@ -58,15 +58,15 @@ jobs:
     needs: assemble_ui_test_artifacts
     steps:
       - uses: actions/checkout@v2
-      - name: Download app-debug APK
+      - name: Download app-common-debug APK
         uses: actions/download-artifact@v1
         with:
-          name: app-debug
+          name: app-common-debug
 
-      - name: Download app-debug-androidTest APK
+      - name: Download app-common-debug-androidTest APK
         uses: actions/download-artifact@v1
         with:
-          name: app-debug-androidTest
+          name: app-common-debug-androidTest
 
       - name: Firebase auth with gcloud
         uses: google-github-actions/setup-gcloud@master
@@ -78,7 +78,7 @@ jobs:
       - name: Run Instrumentation Tests in Firebase Test Lab
         run: |
           gcloud firebase test android models list
-          gcloud firebase test android run --type instrumentation --use-orchestrator --app app-debug/app-debug.apk --test app-debug-androidTest/app-debug-androidTest.apk --device model=Pixel2,version=28,locale=en,orientation=portrait
+          gcloud firebase test android run --type instrumentation --use-orchestrator --app app-common-debug/app-common-debug.apk --test app-common-debug-androidTest/app-common-debug-androidTest.apk --device model=Pixel2,version=28,locale=en,orientation=portrait
 
   build:
     runs-on: ubuntu-latest
