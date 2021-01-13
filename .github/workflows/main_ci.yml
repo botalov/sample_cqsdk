@@ -29,28 +29,28 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
-          path: app/build/outputs/apk/common/debug/app-debug.apk
+          path: app/build/outputs/apk/common/debug/app-common-debug.apk
 
 #     CQ app-debug-androidTest.apk
       - name: Upload app-debug-androidTest APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug-androidTest
-          path: app/build/outputs/apk/common/androidTest/debug/app-debug-androidTest.apk
+          path: app/build/outputs/apk/androidTest/common/debug/app-common-debug-androidTest.apk
 
 #     Dashly app-debug.apk
-      - name: Upload app-debug APK
+      - name: Upload app-us APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug
-          path: app/build/outputs/apk/us/debug/app-debug.apk
+          path: app/build/outputs/apk/us/debug/app-us-debug.apk
 
 #     Dashly app-debug-androidTest.apk
-      - name: Upload app-debug-androidTest APK
+      - name: Upload app-us-androidTest APK
         uses: actions/upload-artifact@v2
         with:
           name: app-debug-androidTest
-          path: app/build/outputs/apk/us/androidTest/debug/app-debug-androidTest.apk
+          path: app/build/outputs/apk/androidTest/us/debug/app-us-debug-androidTest.apk
 
 # Запуск UI-тестов в Firebase Test Lab
   run_ui_tests_on_firebase:
