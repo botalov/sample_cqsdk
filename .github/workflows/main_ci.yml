@@ -30,11 +30,11 @@ jobs:
           name: app-debug
           path: app/build/outputs/apk/debug/app-debug.apk
 
-        - name: Upload app-debug-androidTest APK
-          uses: actions/upload-artifact@v2
-          with:
-            name: app-debug-androidTest
-            path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+      - name: Upload app-debug-androidTest APK
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-debug-androidTest
+          path: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
 
   build:
     runs-on: ubuntu-latest
