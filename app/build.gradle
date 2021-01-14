@@ -25,12 +25,11 @@ android {
 
     signingConfigs {
         release {
-            def keystoreProperties = new Properties()
+            //def keystoreProperties = new Properties()
             def keystorePropsFile = file('build_config/config')
 
-            if(keystorePropsFile.exists()) {
-
-            } else {
+            // Если это не локальная сборка
+            if (!keystorePropsFile.exists()) {
                 apply from: 'versionCode.gradle'
                 storeFile file("keystore/key_for_sample_sdk.jks")
                 storePassword System.getenv('KEYSTORE_PASSWORD')
