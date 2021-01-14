@@ -26,7 +26,7 @@ android {
     signingConfigs {
         release {
             def keystoreProperties = new Properties()
-            def keystorePropsFile = file('keystore/keystore_config')
+            def keystorePropsFile = file('build_config/config')
 
             if(keystorePropsFile.exists()) {
 
