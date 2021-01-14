@@ -80,7 +80,8 @@ jobs:
           gcloud firebase test android models list
           gcloud firebase test android run --type instrumentation --use-orchestrator --app app-common-debug/app-common-debug.apk --test app-common-debug-androidTest/app-common-debug-androidTest.apk --device model=Pixel2,version=28,locale=en,orientation=portrait
 
-  build_release:
+# Подготавливаем релизные apk-файлы для релизов
+  build_releases:
     runs-on: ubuntu-latest
     needs: run_ui_tests_on_firebase
     steps:
@@ -119,5 +120,34 @@ jobs:
       - name: Upload Dashly APK
         uses: actions/upload-artifact@v2
         with:
-            name: app-us-release.apk
-            path: app/build/outputs/apk/us/release/app-us-release.apk
+          name: app-us-release.apk
+          path: app/build/outputs/apk/us/release/app-us-release.apk
+
+# Деплой приложений в Google Play
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build_releases
+    steps:
+      - name: deploy_cq
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJson: ${{ SERVICE_ACCOUNT_JSON }}
+          packageName: io.carrotquest.sample
+          releaseFile: ${{ SIGNED_RELEASE_FILE}}
+          track: beta #Выливаем как бету. Возможные значения - alpha , beta, internal, production, internalsharing
+          #inAppUpdatePriority: 5  #может быть от 1 до 5
+          #userFraction: 1.0
+          whatsNewDirectory: distribution/whatsnew_cq
+          mappingFile: app/build/outputs/mapping/release/mapping_cq.txt
+
+      - name: deploy_dashly
+          uses: r0adkll/upload-google-play@v1
+          with:
+            serviceAccountJson: ${{ SERVICE_ACCOUNT_JSON }}
+            packageName: io.dashly.sample
+            releaseFile: ${{ SIGNED_RELEASE_FILE}}
+            track: beta #Выливаем как бету. Возможные значения - alpha , beta, internal, production, internalsharing
+            #inAppUpdatePriority: 5  #может быть от 1 до 5
+            #userFraction: 1.0
+            whatsNewDirectory: distribution/whatsnew_dashly
+            mappingFile: app/build/outputs/mapping/release/mapping_dashly.txt
