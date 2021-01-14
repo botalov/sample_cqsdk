@@ -17,6 +17,14 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+
+      - name: Bump version
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: app/build.gradle
+          #versionCode: ${{github.run_number}}
+          #versionName: 1.0.0
+
 #     Прогонка юнит-тестов и подготовка артефактов для интерфейсных тестов
       - name: Build APK for UI test after Unit tests
         run: |
@@ -131,9 +139,9 @@ jobs:
       - name: deploy_cq
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJson: ${{ SERVICE_ACCOUNT_JSON }}
+          serviceAccountJson: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           packageName: io.carrotquest.sample
-          releaseFile: ${{ SIGNED_RELEASE_FILE}}
+          releaseFile: app/build/outputs/apk/common/release/app-common-release.apk
           track: beta #Выливаем как бету. Возможные значения - alpha , beta, internal, production, internalsharing
           #inAppUpdatePriority: 5  #может быть от 1 до 5
           #userFraction: 1.0
@@ -143,9 +151,9 @@ jobs:
       - name: deploy_dashly
         uses: r0adkll/upload-google-play@v1
         with:
-          serviceAccountJson: ${{ SERVICE_ACCOUNT_JSON }}
+          serviceAccountJson: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           packageName: io.dashly.sample
-          releaseFile: ${{ SIGNED_RELEASE_FILE}}
+          releaseFile: app/build/outputs/apk/us/release/app-us-release.apk
           track: beta #Выливаем как бету. Возможные значения - alpha , beta, internal, production, internalsharing
           #inAppUpdatePriority: 5  #может быть от 1 до 5
           #userFraction: 1.0
