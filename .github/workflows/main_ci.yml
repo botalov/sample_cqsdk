@@ -80,7 +80,7 @@ jobs:
           gcloud firebase test android models list
           gcloud firebase test android run --type instrumentation --use-orchestrator --app app-common-debug/app-common-debug.apk --test app-common-debug-androidTest/app-common-debug-androidTest.apk --device model=Pixel2,version=28,locale=en,orientation=portrait
 
-  build:
+  build_release:
     runs-on: ubuntu-latest
     needs: run_ui_tests_on_firebase
     steps:
